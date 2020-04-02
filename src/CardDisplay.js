@@ -13,16 +13,20 @@ const MyCard = styled(Card)({
 });
 
 function CardDisplay(props) {
-  const { data, uniqueKey, updateData } = props;
+  const { data, cardKey, updateData } = props;
   const [open, setOpen] = useState(false);
 
-  const handleClose = (data, uniqueKey, event) => {
+  const handleClose = (data, cardKey, event) => {
     event.stopPropagation();
     setOpen(false);
 
     if (event.target.innerText === "UPDATE") {
-      updateData(data, uniqueKey);
+      updateData(data, cardKey);
     }
+  };
+
+  const handleNewItem = dialogData => {
+    updateData(dialogData, cardKey);
   };
 
   const clickLocal = () => {
@@ -39,9 +43,10 @@ function CardDisplay(props) {
       <EditDialog
         data={data}
         open={open}
+        handleNewItem={handleNewItem}
         handleClose={handleClose}
-        key={uniqueKey}
-        uniqueKey={uniqueKey}
+        key={cardKey}
+        cardKey={cardKey}
       />
     </MyCard>
   );

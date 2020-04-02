@@ -25,10 +25,12 @@ function CostDisplay(props) {
         </TableCell>
       </TableRow>
       <TableRow>
-        <TableCell align="center">£{cost.subTotal}</TableCell>
-        <TableCell align="center">£{cost.tax}</TableCell>
-        <TableCell align="center">£{cost.shipping}</TableCell>
-        <TableCell align="center">£{cost.total}</TableCell>
+        <TableCell align="center">£{(+cost.subtotal).toFixed(2)}</TableCell>
+        <TableCell align="center">£{(+cost.tax).toFixed(2)}</TableCell>
+        <TableCell align="center">£{(+cost.shipping).toFixed(2)}</TableCell>
+        <TableCell align="center">
+          £{(+cost.subtotal + +cost.tax + +cost.shipping).toFixed(2)}
+        </TableCell>
       </TableRow>
     </Fragment>
   );

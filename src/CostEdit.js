@@ -14,14 +14,19 @@ function OrderEdit(props) {
         id="subtotal"
         label="Subtotal"
         type="text"
-        defaultValue={cost.subTotal}
+        defaultValue={(+cost.subtotal).toFixed(2)}
       />
-      <TextField id="tax" label="Tax" type="text" defaultValue={cost.tax} />
+      <TextField
+        id="tax"
+        label="Tax"
+        type="text"
+        defaultValue={(+cost.tax).toFixed(2)}
+      />
       <TextField
         id="shipping"
         label="Shipping"
         type="text"
-        defaultValue={cost.shipping}
+        defaultValue={(+cost.shipping).toFixed(2)}
       />
     </Fragment>
   );

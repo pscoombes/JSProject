@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import "./App.css";
@@ -24,8 +25,8 @@ function App() {
 
   const [storedData, storedDataState] = useState(readAll());
 
-  const updateData = (data, uniqueKey) => {
-    let thisKey = uniqueKey;
+  const updateData = (data, cardKey) => {
+    let thisKey = cardKey;
     const newDataState = storedData.map((obj, index) => {
       if (index == thisKey) {
         return data;
@@ -40,6 +41,9 @@ function App() {
       <AppBar position="static" color="primary" className={classes.root}>
         <Toolbar>
           <img src="awesome_logo.svg" alt="Logo" />
+          <Typography variant="title">
+            <h1> J.A.D.E.S.</h1>
+          </Typography>
         </Toolbar>
       </AppBar>
       <Box display="flex" flexWrap="wrap" justifyContent="center">
@@ -49,7 +53,7 @@ function App() {
               data={value}
               key={index.toString()}
               updateData={updateData}
-              uniqueKey={index.toString()}
+              cardKey={index.toString()}
             />
           );
         })}

@@ -13,7 +13,6 @@ import CommentsDisplay from "./CommentsDisplay";
 
 function TableDisplay(props) {
   const { data } = props;
-
   return (
     <TableContainer>
       <Table>

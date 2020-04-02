@@ -13,7 +13,35 @@ import CreationDateEdit from "./CreationDateEdit";
 import LastModifiedDateEdit from "./LastModifiedDateEdit";
 import CommentsEdit from "./CommentsEdit";
 
-function collateData() {
+function collateData(itemsLength) {
+  let creationDateParts = document
+    .querySelector("#creationdate")
+    .value.split("/");
+  let modifiedDateParts = document
+    .querySelector("#modifieddate")
+    .value.split("/");
+
+  let newItems = [];
+  for (let index = 0; index < itemsLength; index++) {
+    if (document.querySelector("#delete" + index).checked == false) {
+      if (
+        !(
+          document.querySelector("#quantity" + index).value == "" &&
+          document.querySelector("#productid" + index).value == "" &&
+          document.querySelector("#productdescription" + index).value == ""
+        )
+      ) {
+        newItems.push({
+          quantity: document.querySelector("#quantity" + index).value,
+          productId: document.querySelector("#productid" + index).value,
+          productDescription: document.querySelector(
+            "#productdescription" + index
+          ).value
+        });
+      }
+    }
+  }
+
   const data = {
     order: {
       name: document.querySelector("#name").value,
@@ -25,33 +53,44 @@ function collateData() {
       tax: document.querySelector("#tax").value,
       shipping: document.querySelector("#shipping").value
     },
-    items: [
-      {
-        quantity: 100,
-        id: "AABBCC1",
-        description: "The AABBCC1 stuff"
-      }
-    ],
+    items: newItems,
     shippingAddress: document.querySelector("#shippingaddress").value,
     raisedBy: document.querySelector("#raisedby").value,
-    creationDate: new Date(document.querySelector("#creationdate").value),
-    modifiedDate: new Date(document.querySelector("#modifieddate").value),
+    creationDate: new Date(
+      creationDateParts[2],
+      creationDateParts[1] - 1,
+      creationDateParts[0]
+    ),
+    modifiedDate: new Date(
+      modifiedDateParts[2],
+      modifiedDateParts[1] - 1,
+      modifiedDateParts[0]
+    ),
     comments: document.querySelector("#comments").value
   };
   return data;
 }
 
 function EditDialog(props) {
-  const { data, open, handleClose, uniqueKey } = props;
+  const { data, open, handleNewItem, handleClose, cardKey } = props;
+
+  const addItem = itemsLength => {
+    const dialogData = collateData(itemsLength);
+    dialogData.items.push({
+      quantity: null,
+      productId: null,
+      productDescription: null
+    });
+    handleNewItem(dialogData);
+  };
 
   return (
     <Dialog open={open} maxWidth="md" fullWidth={true}>
       <DialogTitle>Edit Purchase Order</DialogTitle>
-
       <DialogContent>
         <OrderEdit order={data.order} />
         <CostEdit cost={data.cost} />
-        <ItemEdit items={data.items} />
+        <ItemEdit items={data.items} addItem={addItem} />
         <ShippingAddressEdit shippingAddress={data.shippingAddress} />
         <RaisedByEdit raisedBy={data.raisedBy} />
         <CreationDateEdit creationDate={data.creationDate} />
@@ -60,9 +99,10 @@ function EditDialog(props) {
       </DialogContent>
       <DialogActions>
         <Button
+          type="reset"
           variant="outlined"
           onClick={event => {
-            handleClose(collateData(), uniqueKey, event);
+            handleClose(null, cardKey, event);
           }}
         >
           Cancel
@@ -71,7 +111,7 @@ function EditDialog(props) {
         <Button
           variant="outlined"
           onClick={event => {
-            handleClose(collateData(), uniqueKey, event);
+            handleClose(collateData(data.items.length), cardKey, event);
           }}
         >
           Update

@@ -30,7 +30,7 @@ render   > App > Box > PurchaseOrders > CardDisplay > MyCard > TableDisplay > Ta
 																				> CostEdit
 
 																				  ItemEdit.js
-																				> ItemEdit
+																				> ItemEdit					> 
 																											   
 																				  ShippingAddressEdit
 																				> ShippingAddressEdit
@@ -110,3 +110,54 @@ ItemDisplay.js  let content = [];
     );
   }
 		
+function AddNewItemButton(props) {
+  const { index, length, addItem } = props;
+  if (index === length) {
+    return (
+      <Button
+        variant="outlined"
+        onClick={() => {
+          addItem(length);
+        }}
+      >
+        Add new item
+      </Button>
+    );
+  }
+  return null;
+}
+
+
+  const removeItem = event => {
+    items.push(event.currentTarget.id, 1);
+  };
+
+  function parentRemoveItem(index, numberOfItems, event) {
+    handleRemoveItem(collateData(numberOfItems), index, event);
+  }
+
+
+function EditDialog(props) {
+  const {
+    data,
+    open,
+    handleNewItem,
+    handleClose,
+    cardKey
+  } = props;
+  
+      <EditDialog
+        data={data}
+        open={open}
+        updateData={updateData}
+        handleClose={handleClose}
+        handleRemoveItem={handleRemoveItem}
+        handleNewItem={handleNewItem}
+        key={cardKey}
+        cardKey={cardKey}
+      />
+  
+  
+  const handleRemoveItem = (data, uniqueky, event) => {
+    updateData(data, cardKey);
+  };

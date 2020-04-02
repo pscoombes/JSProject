@@ -7,7 +7,7 @@ function ItemDisplay(props) {
 
   return (
     <Fragment>
-      <TableRow key={items[0].length}>
+      <TableRow key={items.length}>
         <TableCell rowSpan={items.length + 1}>
           <strong>Items:</strong>
         </TableCell>

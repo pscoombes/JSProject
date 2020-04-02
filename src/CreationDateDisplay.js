@@ -6,7 +6,6 @@ import formattedDate from "./FormattedDate";
 function CreationDateDisplay(props) {
   const { creationDate } = props;
   const formattedCreationDate = formattedDate(creationDate);
-
   return (
     <TableRow>
       <TableCell>
