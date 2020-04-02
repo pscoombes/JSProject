@@ -3,8 +3,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 
 function RaisedByDisplay(props) {
-  const { data } = props;
-  const { raisedBy } = data;
+  const { raisedBy } = props;
 
   return (
     <TableRow>

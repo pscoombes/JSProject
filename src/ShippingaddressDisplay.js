@@ -3,8 +3,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 
 function ShippingAddressDisplay(props) {
-  const { data } = props;
-  const { shippingAddress } = data;
+  const { shippingAddress } = props;
 
   return (
     <TableRow>

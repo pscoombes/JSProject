@@ -2,7 +2,7 @@ import React from "react";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableContainer from "@material-ui/core/TableContainer";
-import ItemDisplay from "./itemDisplay";
+import ItemDisplay from "./ItemDisplay";
 import OrderDisplay from "./OrderDisplay";
 import CostDisplay from "./CostDisplay";
 import ShippingAddressDisplay from "./ShippingaddressDisplay";
@@ -11,24 +11,25 @@ import CreationDateDisplay from "./CreationDateDisplay";
 import LastModifiedDateDisplay from "./LastModifiedDateDisplay";
 import CommentsDisplay from "./CommentsDisplay";
 
-function tableDisplay(props) {
-  console.log("tableDisplay 1", props.data);
+function TableDisplay(props) {
+  const { data } = props;
+
   return (
     <TableContainer>
       <Table>
         <TableBody>
-          <OrderDisplay data={props.data} />
-          <CostDisplay data={props.data} />
-          <ItemDisplay data={props.data} />
-          <ShippingAddressDisplay data={props.data} />
-          <RaisedByDisplay data={props.data} />
-          <CreationDateDisplay data={props.data} />
-          <LastModifiedDateDisplay data={props.data} />
-          <CommentsDisplay data={props.data} />
+          <OrderDisplay order={data.order} />
+          <CostDisplay cost={data.cost} />
+          <ItemDisplay items={data.items} />
+          <ShippingAddressDisplay shippingAddress={data.shippingAddress} />
+          <RaisedByDisplay raisedBy={data.raisedBy} />
+          <CreationDateDisplay creationDate={data.creationDate} />
+          <LastModifiedDateDisplay modifiedDate={data.modifiedDate} />
+          <CommentsDisplay comments={data.comments} />
         </TableBody>
       </Table>
     </TableContainer>
   );
 }
 
-export default tableDisplay;
+export default TableDisplay;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import { makeStyles } from "@material-ui/core/styles";
@@ -22,19 +22,18 @@ const useStyles = makeStyles(theme => ({
 function App() {
   const classes = useStyles();
 
-  function PurchaseOrders() {
-    let storedData = readAll();
-    console.log("App 1", storedData.length, storedData);
-    let purchaseOrders = [];
-    for (let i = 0; i < storedData.length; i++) {
-      const element = storedData[i];
-      console.log("App 2", element);
+  const [storedData, storedDataState] = useState(readAll());
 
-      purchaseOrders.push(<CardDisplay data={element} />);
-    }
-    console.log(purchaseOrders);
-    return purchaseOrders;
-  }
+  const updateData = (data, uniqueKey) => {
+    let thisKey = uniqueKey;
+    const newDataState = storedData.map((obj, index) => {
+      if (index == thisKey) {
+        return data;
+      }
+      return obj;
+    });
+    storedDataState(newDataState);
+  };
 
   return (
     <div className={classes.root}>
@@ -44,7 +43,16 @@ function App() {
         </Toolbar>
       </AppBar>
       <Box display="flex" flexWrap="wrap" justifyContent="center">
-        <PurchaseOrders />
+        {storedData.map((value, index) => {
+          return (
+            <CardDisplay
+              data={value}
+              key={index.toString()}
+              updateData={updateData}
+              uniqueKey={index.toString()}
+            />
+          );
+        })}
       </Box>
     </div>
   );

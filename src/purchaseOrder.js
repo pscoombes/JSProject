@@ -6,9 +6,8 @@ function purchaseOrder(
   creationDate,
   modifiedDate,
   comments,
-  ...itemDetails
+  itemDetails
 ) {
-  console.log("purchaseOrder 1", comments);
   this.order = orderDetails;
   this.cost = costDetails;
   this.items = itemDetails;

@@ -6,7 +6,6 @@ import itemDetail from "./itemDetail";
 
 function readAll() {
   let readData = [];
-  console.log("readAll", mockData);
 
   for (let i = 0; i < mockData.length; i++) {
     const element = mockData[i];
@@ -41,11 +40,8 @@ function readAll() {
       itemDetails
     );
 
-    console.log("readAll 1", element.comments, currentPurchaseOrder.comments);
-
     readData.push(currentPurchaseOrder);
   }
-
   return readData;
 }
 

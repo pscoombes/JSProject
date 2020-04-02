@@ -3,8 +3,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 
 function OrderDisplay(props) {
-  const { data } = props;
-  const { order } = data;
+  const { order } = props;
   return (
     <Fragment>
       <TableRow>
@@ -23,8 +22,8 @@ function OrderDisplay(props) {
       </TableRow>
       <TableRow>
         <TableCell>{order.name}</TableCell>
-        <TableCell colSpan={2}>{order.orderId}</TableCell>
-        <TableCell>{order.orderSummary}</TableCell>
+        <TableCell colSpan={2}>{order.id}</TableCell>
+        <TableCell>{order.summary}</TableCell>
       </TableRow>
     </Fragment>
   );

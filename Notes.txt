@@ -1,0 +1,112 @@
+Index.js   App.js                       CardDisplay.js         tabledisplay.js                                     OrderDisplay.js
+render   > App > Box > PurchaseOrders > CardDisplay > MyCard > TableDisplay > TableContainer > Table > TableBody > OrderDisplay
+
+																												   CostDisplay.js
+																												 > CostDisplay
+																												   
+																												   ItemDisplay.js
+																												 > ItemDisplay
+																												   
+																												   ShippingAddressDisplay
+																												 > ShippingAddressDisplay
+																												   
+																												   RaisedByDisplay.js
+																												 > RaisedByDisplay
+																												   
+																												   CreationDateDisplay.js
+																												 > CreationDateDisplay
+																												   
+																												   LastModifiedDateDisplay.js
+																												 > LastModifiedDateDisplay
+																												   
+																												   CommentsDisplay.js
+																												 > CommentsDisplay
+																												   
+
+															   EditDialog.js	  OrderEdit.js
+                                                             > EditDialog    	> OrderEdit  
+
+																			       CostEdit.js
+																				> CostEdit
+
+																				  ItemEdit.js
+																				> ItemEdit
+																											   
+																				  ShippingAddressEdit
+																				> ShippingAddressEdit
+																										   
+																				  RaisedByEdit.js
+																				> RaisedByEdit
+																							   
+																				  CreationDateEdit.js
+																				> CreationDateEdit
+																												   
+																				  LastModifiedDateEdit.js
+																				> LastModifiedDateEdit
+																												   
+																				  CommentsEdit.js
+																				> CommentsEdit
+
+
+
+CardDisplay
+  const [open, setOpen] = useState(false);
+  const [orderState, setOrderState] = useState(data.order);
+  const [costState, setCostState] = useState(data.cost);
+  const [itemsState, setItemsState] = useState(data.items);
+  const [shippingAddressState, setShippingAddressState] = useState(data.shippingAddress);
+  const [raisedByState, setRaisedByState] = useState(data.raisedBy);
+  const [creationDateState, setCreationDateState] = useState(data.creationDate);
+  const [modifiedDateState, setModifiedDateState] = useState(data.modifiedDate);
+  const [commentsState, setCommentsState] = useState(data.comments);
+
+        order={orderState}
+        cost={costState}
+        items={itemsState}
+        shippingAddress={shippingAddressState}
+        raisedBy={raisedByState}
+        creationDate={creationDateState}
+        modifiedDate={modifiedDateState}
+        comments={commentsState}
+		
+		
+TableDisplay  const {
+    order,
+    cost,
+    items,
+    shippingAddress,
+    raisedBy,
+    creationDate,
+    modifiedDate,
+    comments
+  } = props;
+		
+ItemDisplay.js  let content = [];
+  content.push(
+    <TableRow key={items[0].length}>
+      <TableCell rowSpan={items[0].length + 1}>
+        <strong>Items:</strong>
+      </TableCell>
+      <TableCell align="center">
+        <strong>Quantity</strong>
+      </TableCell>
+      <TableCell align="center" colSpan={2}>
+        <strong>Product Id</strong>
+      </TableCell>
+      <TableCell align="center">
+        <strong>Product Description</strong>
+      </TableCell>
+    </TableRow>
+  );
+  for (let i = 0; i < items[0].length; i++) {
+    content.push(
+      <TableRow key={i.toString()}>
+        <TableCell align="center">{items[0][i].quantity}</TableCell>
+        <TableCell align="center" colSpan={2}>
+          {items[0][i].productId}
+        </TableCell>
+        <TableCell>{items[0][i].productDescription}</TableCell>
+      </TableRow>
+    );
+  }
+		

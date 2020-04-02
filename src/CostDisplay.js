@@ -3,8 +3,8 @@ import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 
 function CostDisplay(props) {
-  const { data } = props;
-  const { cost } = data;
+  const { cost } = props;
+
   return (
     <Fragment>
       <TableRow>

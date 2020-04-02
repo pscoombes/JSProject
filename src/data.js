@@ -85,6 +85,36 @@ let mockData = [
     creationDate: new Date(2019, 3, 30),
     modifiedDate: new Date(2019, 3, 30),
     comments: "Handle with care"
+  },
+  {
+    order: {
+      name: "Cheese",
+      id: "8754",
+      summary: "Emergency order"
+    },
+    cost: {
+      subtotal: 104,
+      tax: 21,
+      shipping: 7
+    },
+    items: [
+      {
+        quantity: 1,
+        id: "ST1",
+        description: "Stilton"
+      },
+      {
+        quantity: 3,
+        id: "RL1",
+        description: "Red Leicester"
+      }
+    ],
+    shippingAddress:
+      "Ms A. Marshall, 8, Welland Vale Road, Tilehurst, Reading RG1 1AA",
+    raisedBy: "Mr. C. Macy",
+    creationDate: new Date(2020, 2, 3),
+    modifiedDate: new Date(2019, 2, 4),
+    comments: "Keep chilled - below 5 centrigrade."
   }
 ];
 

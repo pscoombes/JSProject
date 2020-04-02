@@ -1,7 +1,7 @@
-function orderDetail(name, orderId, orderSummary) {
+function orderDetail(name, id, summary) {
   this.name = name;
-  this.orderId = orderId;
-  this.orderSummary = orderSummary;
+  this.id = id;
+  this.summary = summary;
 }
 
 export default orderDetail;
