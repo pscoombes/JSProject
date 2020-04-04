@@ -101,9 +101,7 @@ function EditDialog(props) {
         <Button
           type="reset"
           variant="outlined"
-          onClick={event => {
-            handleClose(null, cardKey, event);
-          }}
+          onClick={event => handleClose(null, cardKey, event)}
         >
           Cancel
         </Button>
