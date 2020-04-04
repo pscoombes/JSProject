@@ -1,0 +1,34 @@
+From Chris on Tthursday 02/04/2020
+
+1) JavaScript Lifecycle
+  Investigate ComponenetDidMount, ComponentShouldUpdate, ComponentWillUpdate
+
+2) Classes & Functions
+Use classes for stateful components and functions for stateless components
+
+3) Hooks
+  Only use hooks on leaf nodes that will affect their local stateful
+
+4) Index as key
+  Don't do this as it confuses react. What is 0 now becomes a different 0 later. Use something that genuinely is unique (key from database?)
+
+5) Split Source Code into Folders
+  Consider containers as pages and componenets as elements
+
+6) CSS
+  If CSS is not working it may be neccessary to use !important
+  Investigate modularised CSS i.e. CardDisplay.module.css
+  Add import style form "CardDisplay.module.css"
+  Don;t do strong in JS do it in CSS
+
+7) Pass data to EditDialog
+  Instead of having a dialog for each table, just have one and pass the data to it. 
+
+8) Dynamic Fields 
+  If there are a number of fields that differ only in names of props and content, do them dynamically
+
+9) Dialog and State
+  Let the dialog have its own state and use onChange on each field to update it. Only pass this back to underlying state when the Update button is pressed.
+
+10) Change main screen
+  Change the display to a regular table listing key componenets. Click on a row will show dialog screen where all data is displayed.
